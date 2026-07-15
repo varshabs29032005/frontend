@@ -1,25 +1,47 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>COLLEGE DATA</title>
-         <style>
+<head>
+    <title>Product Data</title>
+    <style>
         table, th, td {
             border: 1px solid #999;
-            padding: 6px 12px;
             border-collapse: collapse;
+            padding: 6px 12px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        h1 {
+            color: blue;
         }
     </style>
-    </head>
-    <body>
-        <h1>Student info</h1>
-        <table id="data">
-            <tr><th>SID</th><th>S_name</th><th>branch</th><th>sem</th></tr>
-            <tr><td>IS051</td><td>neha</td><td>ISE</td><td>7</td></tr>
-            <tr><td>CS033</td><td>Sneha</td><td>CSE</td><td>6</td></tr>
-            <tr><td>IS027</td><td>Priya</td><td>ISE</td><td>5</td></tr>
-            <tr><td>EC049</td><td>Deepu</td><td>ECE</td><td>6</td></tr>
-            <tr><td>IS070</td><td>Poorvi</td><td>ISE</td><td>7</td></tr>
+</head>
+
+<body>
+
+<h1>Product Information</h1>
+<h3>vedha</h3>
+
+<table id="data">
+
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Price</th>
+</tr>
+
+{% for p in products %}
+<tr>
+    <td>{{ p.id }}</td>
+    <td>{{ p.name }}</td>
+    <td>{{ p.price }}</td>
+</tr>
+{% endfor %}
+
 </table>
-           
-    </body>
+
+</body>
 </html>
