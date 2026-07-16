@@ -1,5 +1,5 @@
 import mysql.connector
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
 
@@ -20,9 +20,13 @@ def get_products():
 
     return rows
 
+@app.route('/api/products')
+def api_products():
+    return jsonify(get_products())
+
 @app.route('/')
 def home():
-    return render_template('index.html', products=get_products())
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
