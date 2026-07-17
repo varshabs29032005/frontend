@@ -1,10 +1,12 @@
-document.addEventListener("DOMContentLoaded", async () => {
+async function load(sort = "id") {
 
-    const response = await fetch("/api/products");
+    const response = await fetch("/api/products?sort=" + sort);
 
     const products = await response.json();
 
     const table = document.getElementById("data");
+
+    table.querySelectorAll("tr:not(:first-child)").forEach(r => r.remove());
 
     for (const p of products) {
 
@@ -17,7 +19,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
 
         table.appendChild(row);
-
     }
+}
 
+document.addEventListener("DOMContentLoaded", () => {
+    load();
 });
